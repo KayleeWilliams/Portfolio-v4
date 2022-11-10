@@ -1,25 +1,14 @@
-#app { height: 100% }
 
-.swiper {
-  width: 100%;
-  height: 45%;
+#hero.swiper {
+  width: 100% !important;
+  height: 330px !important;
 }
 
-.swiper-slide {
+#hero.swiper-slide {
   text-align: center;
   font-size: 18px;
-
-  display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.not-active {
-  background-color: rgb(196, 36, 36);
-}
-
-.active {
-  background-color: rgb(73, 159, 3);
 }
 
 .swiper-pagination {
@@ -36,4 +25,6 @@
 .swiper-button-next,
 .swiper-button-prev {
   color: #FFF;
+  top: 8%;
+  height: 100%;
 }

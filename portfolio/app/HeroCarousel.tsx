@@ -2,6 +2,9 @@
 
 // Import Swiper React components
 import React from "react";
+import Image from 'next/image';
+import Link from "next/link";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -9,20 +12,17 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import "./styles.css";
+import "./HeroCarousel.css";
 // import required modules
 import { Navigation, Pagination, Autoplay } from "swiper";
 
-export default function Carrossel() {
-
-
-  const slides = Array.from({ length: 5 }).map(
-    (el, index) => `Slide ${index + 1}`
-  );
+export default function HeroCarousel(props: any) {
+  const slides = props.data;
 
   return (
     <>
       <Swiper
+        id="hero"
         slidesPerView={1.1}
         centeredSlides={true}
         spaceBetween={16}
@@ -33,20 +33,24 @@ export default function Carrossel() {
           delay: 4000,
           disableOnInteraction: false,
         }}
-        pagination={({ clickable: true})}
+        pagination={{ clickable: true }}
       >
-        {slides.map((slideContent, index) => (
-          <SwiperSlide
-            key={slideContent}
-            virtualIndex={index}
-            className="bg-gray-200"
-          >
+
+        {slides.map((slide: any, index: number) => (
+          <SwiperSlide key={slide.id}>
             {({ isActive }) => (
-              <div
-                className={`w-full h-full ${
-                  isActive ? "active" : "not-active"
+              <Link
+                href={slide.attributes.Link}
+                className={`h-full w-full ${
+                  isActive ? "opacity-100" : "opacity-50"
                 }`}
-              />
+              >
+                <Image
+                  src={`http://localhost:1337${slide.attributes.Cover.data.attributes.url}`}
+                  alt={slide.attributes.Title}
+                  fill
+                />
+              </Link>
             )}
           </SwiperSlide>
         ))}

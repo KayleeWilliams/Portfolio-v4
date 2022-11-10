@@ -14,8 +14,8 @@ export default function RootLayout({children,}: {children: React.ReactNode;}) {
 
   function scrollFunction() {
     if (
-      document.body.scrollTop > 80 ||
-      document.documentElement.scrollTop > 80
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
     ) {
       document.getElementById("navbar").style.background ="hsla(274, 16%, 14%, 1)";
     } else {
