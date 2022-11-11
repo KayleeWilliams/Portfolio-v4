@@ -22,7 +22,6 @@ export default function HeroCarousel(props: any) {
   return (
     <>
       <Swiper
-        id="hero"
         slidesPerView={1.1}
         centeredSlides={true}
         spaceBetween={16}
@@ -34,6 +33,7 @@ export default function HeroCarousel(props: any) {
           disableOnInteraction: false,
         }}
         pagination={{ clickable: true }}
+        className="hero-carousel"
       >
 
         {slides.map((slide: any, index: number) => (
@@ -41,9 +41,7 @@ export default function HeroCarousel(props: any) {
             {({ isActive }) => (
               <Link
                 href={slide.attributes.Link}
-                className={`h-full w-full ${
-                  isActive ? "opacity-100" : "opacity-50"
-                }`}
+                className={`h-full w-full`}
               >
                 <Image
                   src={`http://localhost:1337${slide.attributes.Cover.data.attributes.url}`}

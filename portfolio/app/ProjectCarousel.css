@@ -1,5 +1,70 @@
-#projects.swiper {
+.project-carousel {
   width: 100% !important;
-  height: 140px !important;
+  height: auto !important;
 }
 
+.project-carousel .swiper-wrapper {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.project-carousel .swiper-slide {
+  height: 140px;
+  border-radius: 4px;
+}
+
+.project-carousel .swiper-slide:hover {
+  border: white solid 4px;
+  z-index: 1;
+  scale: 1.1;
+  transition: ease-in-out 0.4s;
+}
+
+.project-carousel .swiper-slide:first-child:hover {
+  margin: 0 16px;
+}
+
+.project-carousel .swiper-button-next {
+  background-color: hsla(274, 16%, 14%, 0.4);
+  display: flex;
+  height: 110%;
+  width: 3.5%;
+  right: 0;
+}
+
+.project-carousel .swiper-button-prev {
+  background-color: hsla(274, 16%, 14%, 0.4);
+  display: flex;
+  height: 110%;
+  width: 3.5%;
+  top: 12%;
+  left: 0;
+}
+
+.project-carousel .swiper-button-next::after,
+.swiper-button-prev::after {
+  content: none;
+}
+
+.project-carousel .swiper-button-next {
+  color: white;
+  height: 110%;
+  width: 3%;
+  top: 12%;
+}
+
+.project-carousel .swiper-button-disabled {
+  display: none;
+}
+
+.project-carousel:hover .swiper-button-next:hover::after {
+  content: "next";
+}
+
+.project-carousel:hover .swiper-button-prev:hover::after {
+  content: "prev";
+}
+
+.project-carousel img {
+  border-radius: 4px;
+}

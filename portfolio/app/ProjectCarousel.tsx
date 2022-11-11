@@ -19,20 +19,19 @@ export default function ProjectCarousel(props: any) {
 
   return (
     <Swiper
-      id="projects"
       slidesPerView={5.2}
-      spaceBetween={12}
+      slidesPerGroup={5}
+      spaceBetween={14}
       navigation={true}
       modules={[Navigation, Virtual]}
       virtual={true}
       watchSlidesProgress={true}
+      className="project-carousel"
     >
       {projects.map((project: any, index: number) => (
         <SwiperSlide key={project.id} virtualIndex={index}>
           {({ isVisible }) => (
-            <Link
-              href=""
-              className={`w-full h-full`}>
+            <Link href={`project/${project.id}`} className={`w-full h-full`}>
               <Image
                 src={`http://localhost:1337${project.attributes.Thumbnail.data.attributes.url}`}
                 alt={project.attributes.Title}
