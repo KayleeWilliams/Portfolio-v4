@@ -35,7 +35,7 @@ export default async function Home() {
           <HeroCarousel data={banners} />
 
           <div className="flex flex-col gap-4 mb-8">
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col">
               <h1 className="text-white font-bold text-xl"> All Projects </h1>
               <ProjectCarousel data={projects} />
             </div>
