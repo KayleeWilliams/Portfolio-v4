@@ -8,9 +8,10 @@ import dotenv from "dotenv";
 import "./projects.css"
 dotenv.config();
 
-async function getData() {
-  const projects: object = await fetch(
-    "http://localhost:1337/api/projects?populate=%2A",
+
+async function getData(url: string) {
+  const res: any = await fetch(
+    url,
     {
       headers: {
         Authorization: `Bearer ${process.env.API_KEY}`,
@@ -18,23 +19,13 @@ async function getData() {
     }
   ).then((res) => res.json());
 
-  const technologies: object = await fetch(
-    "http://localhost:1337/api/technologies?populate=projects.Thumbnail",
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.API_KEY}`,
-      },
-    }
-  ).then((res) => res.json());
-  
-  return { projects, technologies };
-}
+  return res.data;
+};
 
 export default async function Home() {
 
-  const data: any = await getData();
-  const projects = data.projects.data;
-  const technologies = data.technologies.data;
+  const projects: any = await getData("http://localhost:1337/api/projects?populate=%2A&sort=id:desc");
+  const technologies: any = await getData("http://localhost:1337/api/technologies?populate=projects.Thumbnail");
 
   return (
     <div>
@@ -43,15 +34,19 @@ export default async function Home() {
           <h1 className="text-white font-bold text-5xl">My Projects</h1>
           <div className="flex flex-row flex-wrap align-center w-full ml-[-20px]">
             {projects.map((project: any) => (
-                <Link href={`/`} key={project.id} className="project">
-                  <div className="project-container">
+              <Link
+                href={`/projects/${project.id}`}
+                key={project.id}
+                className="project"
+              >
+                <div className="project-container">
                   <Image
                     src={`http://localhost:1337${project.attributes.Thumbnail.data.attributes.url}`}
                     alt={project.attributes.Title}
                     fill
                   />
-                  </div>
-                </Link>
+                </div>
+              </Link>
             ))}
           </div>
         </div>

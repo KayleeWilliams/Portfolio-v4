@@ -13,7 +13,7 @@ export default function ProjectList(props: any) {
               <h1 className="text-white font-bold text-xl">
                 {technology.attributes.Name} Projects
               </h1>
-              <ProjectCarousel data={technology.attributes.projects.data} />
+              <ProjectCarousel data={technology.attributes.projects.data.reverse()} />
             </div>
           )}
         </div>

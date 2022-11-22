@@ -1,27 +1,28 @@
 .project-carousel {
-  width: 100% !important;
-  height: auto !important;
+  width: 100%;
+  height: 100%;
 }
 
 .project-carousel .swiper-wrapper {
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 .project-carousel .swiper-slide {
-  height: 140px;
+  padding-top: 10%;
   border-radius: 4px;
+  margin: 0;
 }
 
 .project-carousel .swiper-slide:hover {
   border: white solid 4px;
-  z-index: 1;
+  z-index: 10;
   scale: 1.1;
   transition: ease-in-out 0.4s;
 }
 
 .project-carousel .swiper-slide:first-child:hover {
-  margin: 0 16px;
+  margin: 0 1%;
 }
 
 .project-carousel .swiper-button-next {

@@ -1,14 +1,16 @@
 .hero-carousel {
-  width: 100% !important;
-  height: 330px !important;
+  width: 100%;
+  height: 100%;
 }
 
 .hero-carousel .swiper-slide {
   opacity: 0.4;
+  padding-top: 24%;
 }
 
 .hero-carousel .swiper-slide-active {
   opacity: 1;
+  padding-top: 24%;
 }
 
 .hero-carousel .swiper-pagination {

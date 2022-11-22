@@ -27,7 +27,6 @@ export default function RootLayout({children,}: {children: React.ReactNode;}) {
     }
   };
 
-
   return (
     <html>
       <head></head>
@@ -43,7 +42,7 @@ export default function RootLayout({children,}: {children: React.ReactNode;}) {
                 d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8z"
               />
             </svg>
-            Home
+            <p>Home</p>
           </Link>
           <Link href="/projects" className="flex flex-row items-center gap-1">
             <svg width="16" height="16" viewBox="0 0 24 24">
@@ -52,7 +51,7 @@ export default function RootLayout({children,}: {children: React.ReactNode;}) {
                 d="M13 9h5.5L13 3.5V9M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m.12 13.5l3.74 3.74l1.42-1.41l-2.33-2.33l2.33-2.33l-1.42-1.41l-3.74 3.74m11.16 0l-3.74-3.74l-1.42 1.41l2.33 2.33l-2.33 2.33l1.42 1.41l3.74-3.74Z"
               />
             </svg>
-            My Projects
+            <p>My Projects</p>
           </Link>
         </div>
 
