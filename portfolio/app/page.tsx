@@ -8,25 +8,25 @@ import HeroCarousel from "./HeroCarousel";
 import ProjectCarousel from "./ProjectCarousel";
 import ProjectList from "./ProjectList";
 
+dotenv.config();
+
+async function getData(url: string) {
+  const res: any = await fetch(
+    url,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.API_KEY}`,
+      },
+    }
+  ).then((res) => res.json());
+
+  return res.data;
+};
+
 export default async function Home() {
-
-  dotenv.config();
-
-  async function fetch(url: string) {
-    const response = await axios.get(url,
-      {
-        headers: {
-          Authorization:
-            `Bearer ${process.env.API_KEY}`,
-        },
-      }
-    );
-    return response.data.data;
-  }
-
-  const banners: object = await fetch("http://localhost:1337/api/fields?populate=%2A");
-  const projects: object = await fetch("http://localhost:1337/api/projects?populate=%2A");
-  const technologies: any = await fetch("http://localhost:1337/api/technologies?populate=projects.Thumbnail");
+  const banners: object = await getData("http://localhost:1337/api/fields?populate=%2A");
+  const projects: object = await getData("http://localhost:1337/api/projects?populate=%2A");
+  const technologies: any = await getData("http://localhost:1337/api/technologies?populate=projects.Thumbnail");
 
   return (
     <div>

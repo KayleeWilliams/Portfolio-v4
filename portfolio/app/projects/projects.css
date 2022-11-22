@@ -1,0 +1,21 @@
+.project {
+  width: calc(25% - 20px);
+  position: relative;
+  margin-top: 20px;
+  margin-left: 20px;
+  border: 0;
+}
+
+.project :hover {
+  border: white solid 4px;
+  border-radius: 4px;
+  scale: 1.05;
+  transition: ease-in-out 0.3s;
+
+}
+
+.project-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+}

@@ -14,7 +14,7 @@ export default function RootLayout({children,}: {children: React.ReactNode;}) {
 
   function scrollFunction() {
     if (
-      document.body.scrollTop > 40 || document.documentElement.scrollTop > 40
+      document.body.scrollTop > 20 || document.documentElement.scrollTop > 20
     ) {
       document.getElementById("navbar").style.background = "hsla(274, 16%, 14%, 1)";
 
@@ -34,10 +34,26 @@ export default function RootLayout({children,}: {children: React.ReactNode;}) {
       <body className="bg-[#241E29] flex flex-col">
         <div
           id="navbar"
-          className="flex flex-row fixed gap-8 text-base font-medium text-white pl-32 py-4 w-full z-50 top-0"
+          className="flex flex-row fixed gap-8 text-sm font-medium text-white pl-32 py-4 w-full z-50 top-0"
         >
-          <Link href="/"> About Me </Link>
-          <Link href="/"> My Projects </Link>
+          <Link href="/" className="flex flex-row items-center gap-1">
+            <svg width="16" height="16" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8z"
+              />
+            </svg>
+            Home
+          </Link>
+          <Link href="/projects" className="flex flex-row items-center gap-1">
+            <svg width="16" height="16" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M13 9h5.5L13 3.5V9M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m.12 13.5l3.74 3.74l1.42-1.41l-2.33-2.33l2.33-2.33l-1.42-1.41l-3.74 3.74m11.16 0l-3.74-3.74l-1.42 1.41l2.33 2.33l-2.33 2.33l1.42 1.41l3.74-3.74Z"
+              />
+            </svg>
+            My Projects
+          </Link>
         </div>
 
         <main>{children}</main>

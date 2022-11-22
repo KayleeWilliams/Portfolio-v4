@@ -4,7 +4,7 @@ const nextConfig = {
   swcMinify: true,
   experimental: { appDir: true },
   images: {
-    domains: ["localhost"],
+    domains: ["localhost", "api.iconify.design"],
   },
 };
 

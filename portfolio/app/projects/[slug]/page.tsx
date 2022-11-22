@@ -1,27 +1,30 @@
 import Image from "next/image";
-import axios from "axios";
 import Link from "next/link";
-import "./Project.css";
-
 import Github from "./Github";
 import Youtube from "./Youtube";
 import External from "./External";
 
+import dotenv from "dotenv";
+dotenv.config();
 
-export default async function Home({params}) {
-  // params.slug
-  async function fetch(url: string) {
-    const response = await axios.get(url, {
+import "./Project.css";
+
+
+async function getProject(params: any) {
+  const res: any = await fetch(
+    `http://localhost:1337/api/projects/${params.slug}?populate[technologies][populate]=%2A&populate[Cover][populate]=%2A`,
+    {
       headers: {
         Authorization: `Bearer ${process.env.API_KEY}`,
       },
-    });
-    return response.data.data;
-  }
+    }
+  ).then((res) => res.json());
 
-  const project: object = await fetch(
-    `http://localhost:1337/api/projects/${params.slug}?populate[technologies][populate]=%2A&populate[Cover][populate]=%2A`
-  );
+  return res.data; 
+}
+
+export default async function Home({params}) {
+  const project: any = await getProject(params);
 
   let projectDate: any = new Date(project.attributes.Date);
   projectDate = projectDate.toLocaleString("en-GB", {
@@ -111,5 +114,4 @@ export default async function Home({params}) {
         </div>
       </article>
     </div>
-  );
-}
+)};
