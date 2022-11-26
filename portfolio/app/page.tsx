@@ -25,10 +25,9 @@ async function getData(url: string) {
 
 export default async function Home() {
   const banners: object = await getData("http://localhost:1337/api/fields?populate=%2A");
-  const projects: object = await getData("http://localhost:1337/api/projects?populate=%2A&sort=id:desc");
-  const technologies: any = await getData("http://localhost:1337/api/technologies?populate=projects.Thumbnail");
+  const projects: any = await getData("http://localhost:1337/api/projects?populate=%2A&sort=id:desc");
+  const technologies: any = await getData("http://localhost:1337/api/technologies?populate=projects.Thumbnail&populate=projects.Slug");
 
-  // console.log(technologies.attributes.projects);
   return (
     <div>
       <main>

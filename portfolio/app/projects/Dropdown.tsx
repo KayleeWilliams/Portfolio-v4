@@ -27,12 +27,13 @@ export default function Dropdown({data, selected, setSelected}: any) {
 
       {dropdownOpen && (
         <div className="bg-[#131313] w-fit flex flex-col gap-2 fixed z-50 py-2 mt-4 select-none rounded-lg">
-          <div
-            className={`${
-              dropdownOpen ? "visible" : "invisible"
-            } text-white w-full hover:bg-[#2A2A2A] px-8`}
-            onClick={() => setSelected(null)}
-          >
+          <div onClick={() => setSelected(null)} className={`${dropdownOpen ? "visible" : "invisible"} 
+              ${selected == null ? "font-medium px-3": "font-base px-8"} text-white w-full hover:bg-[#2A2A2A] flex flex-row items-center`}>
+
+              {selected == null && (
+                <div className="bg-white w-2 h-2 rounded-full mr-3" />
+              )}
+
             <p> All </p>
           </div>
 
@@ -41,9 +42,16 @@ export default function Dropdown({data, selected, setSelected}: any) {
               key={technology.id}
               onClick={() => setSelected(technology.id)}
               className={`${dropdownOpen ? "visible" : "invisible"} 
-              ${selected == technology.id ? "font-medium" : "font-base"} 
-              text-white w-full hover:bg-[#2A2A2A] px-8`}
-            >
+              ${
+                selected == technology.id
+                  ? "font-medium px-3"
+                  : "font-base px-8"
+              } 
+              text-white w-full hover:bg-[#2A2A2A] flex flex-row items-center`}>
+              {selected == technology.id && (
+                <div className="bg-white w-2 h-2 rounded-full mr-3" />
+              )}
+
               <p> {technology.attributes.Name} </p>
             </div>
           ))}

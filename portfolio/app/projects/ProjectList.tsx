@@ -12,7 +12,6 @@ export default function ProjectList(props: any) {
   const technologies = props.data.technologies;
 
   const [selectedOption, setSelectedOption] = useState(null);
-  const [selectedData, setData] = useState([]);
 
   function setSelected(id: any) {
     setSelectedOption(id);
@@ -27,15 +26,16 @@ export default function ProjectList(props: any) {
           selected={selectedOption}
           setSelected={setSelected}
         />
-        
       </div>
       <div className="flex flex-row flex-wrap align-center w-full ml-[-20px]">
         {selectedOption != null &&
           technologies
             .find((technology: any) => technology.id === selectedOption)
-            .attributes.projects.data.slice(0).reverse().map((project: any) => (
+            .attributes.projects.data.slice(0)
+            .reverse()
+            .map((project: any) => (
               <Link
-                href={`/projects/${project.id}`}
+                href={`/projects/${project.attributes.Slug}`}
                 key={project.id}
                 className="project"
               >
@@ -52,7 +52,7 @@ export default function ProjectList(props: any) {
         {selectedOption == null &&
           projects.map((project: any) => (
             <Link
-              href={`/projects/${project.id}`}
+              href={`/projects/${project.attributes.Slug}`}
               key={project.id}
               className="project"
             >

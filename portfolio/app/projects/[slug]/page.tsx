@@ -11,19 +11,17 @@ import "./Project.css";
 
 
 async function getProject(params: any) {
-  const res: any = await fetch(
-    `http://localhost:1337/api/projects/${params.slug}?populate[technologies][populate]=%2A&populate[Cover][populate]=%2A`,
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.API_KEY}`,
-      },
-    }
-  ).then((res) => res.json());
+  const url = `http://localhost:1337/api/projects?filters[slug][$eq]=${params.slug}&populate[technologies][populate]=%2A&populate[Cover][populate]=%2A`; 
+  const res: any = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${process.env.API_KEY}`,
+    },
+  }).then((res) => res.json());
 
-  return res.data; 
+  return res.data[0];
 }
 
-export default async function Home({params}) {
+export default async function Home({params}: any) {
   const project: any = await getProject(params);
 
   let projectDate: any = new Date(project.attributes.Date);

@@ -31,7 +31,7 @@ export default function ProjectCarousel(props: any) {
       {projects.map((project: any, index: number) => (
         <SwiperSlide key={project.id} virtualIndex={index}>
           {({ isVisible }) => (
-            <Link href={`projects/${project.id}`} className={`w-full h-full`}>
+            <Link href={`projects/${project.attributes.Slug}`} className={`w-full h-full`}>
               <Image
                 src={`http://localhost:1337${project.attributes.Thumbnail.data.attributes.url}`}
                 alt={project.attributes.Title}
