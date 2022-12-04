@@ -33,8 +33,9 @@ export default async function Projects() {
 
   return (
     <div>
+      <title> Projects | Kaylee's Portfolio </title>
       <main>
-        <ProjectList data={{projects, technologies}} />
+        <ProjectList data={{ projects, technologies }} />
       </main>
     </div>
   );

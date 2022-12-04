@@ -29,11 +29,10 @@ export default function RootLayout({children,}: {children: React.ReactNode;}) {
 
   return (
     <html>
-      <head></head>
       <body className="bg-[#241E29] flex flex-col">
         <div
           id="navbar"
-          className="flex flex-row fixed gap-8 text-sm font-medium text-white pl-32 py-4 w-full z-50 top-0"
+          className="flex flex-row fixed gap-8 text-sm font-[500] tracking-wider uppercase text-white pl-32 py-4 w-full z-50 top-0"
         >
           <Link href="/" className="flex flex-row items-center gap-1">
             <svg width="16" height="16" viewBox="0 0 24 24">

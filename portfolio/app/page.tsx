@@ -1,8 +1,6 @@
 // import "server-side";
 import React from "react";
 import Head from "next/head";
-import Image from "next/image";
-import axios from "axios";
 import dotenv from "dotenv";
 import HeroCarousel from "./HeroCarousel";
 import ProjectCarousel from "./ProjectCarousel";
@@ -30,20 +28,20 @@ export default async function Home() {
 
   return (
     <div>
-      <main>
-        <div className="w-screen flex-shrink-0 px-8 mt-16 flex flex-col gap-12">
-          <HeroCarousel data={banners} />
+      <title> Kaylee's Portfolio </title>
 
-          <div className="flex flex-col gap-4 mb-8">
-            <div className="flex flex-col">
-              <h1 className="text-white font-bold text-xl"> All Projects </h1>
-              <ProjectCarousel data={projects} />
-            </div>
+      <div className="w-screen flex-shrink-0 px-8 mt-16 flex flex-col gap-12">
+        <HeroCarousel data={banners} />
 
-            <ProjectList data={technologies} />
+        <div className="flex flex-col gap-4 mb-8">
+          <div className="flex flex-col">
+            <h1 className="text-white font-bold text-xl"> All Projects </h1>
+            <ProjectCarousel data={projects} />
           </div>
-          </div>
-      </main>
+
+          <ProjectList data={technologies} />
+        </div>
+      </div>
     </div>
   );
 }

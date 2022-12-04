@@ -14,26 +14,26 @@ export default function External(props: any) {
       {external != null && main == "External" && (
         <Link
           href={external}
-          className="bg-[#0072d2] text-white px-4 py-4 text-base flex flex-row font-bold gap-1 w-fit rounded hover:bg-[#0082f0]"
+          className="bg-white text-black px-6 h-14 text-base tracking-wider flex flex-row font-black gap-3 w-fit items-center rounded hover:opacity-60 ease-in-out duration-300"
           target="_blank"
         >
-          <svg width="24px" height="24px" viewBox="0 0 24 24">
+          <svg width="32px" height="32px" viewBox="0 0 24 24">
             <path
               fill="currentColor"
               d="M6.4 18L5 16.6L14.6 7H6V5h12v12h-2V8.4Z"
             ></path>
           </svg>
-          <p>View Externally</p>
+          <p>ONLINE</p>
         </Link>
       )}
 
       {external != null && main != "External" && (
         <Link
           href={external}
-          className="bg-[#0072d2] text-white p-2 text-base flex rounded-full hover:bg-[#0082f0] justify-center content-center h-min"
+          className="bg-black border-white border-2 text-white w-10 h-10 text-base flex rounded-full justify-center items-center content-center hover:bg-white hover:text-black ease-in duration-300"
           target="_blank"
         >
-          <svg width="36px" height="36px" viewBox="0 0 24 24">
+          <svg width="24px" height="24px" viewBox="0 0 24 24">
             <path
               fill="currentColor"
               d="M6.4 18L5 16.6L14.6 7H6V5h12v12h-2V8.4Z"
