@@ -1,14 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
-import Github from "./Github";
-import Youtube from "./Youtube";
-import External from "./External";
-
+import ExternalButton from "./ExternalButton";
 import dotenv from "dotenv";
 dotenv.config();
 
 import "./Project.css";
-
 
 async function getProject(params: any) {
   const url = `http://localhost:1337/api/projects?filters[slug][$eq]=${params.slug}&populate[technologies][populate]=%2A&populate[Cover][populate]=%2A`; 
@@ -36,7 +31,18 @@ export default async function Home({params}: any) {
   project.attributes.technologies.data.map((technology: any, index: number) => {
     technologiesList += technology.attributes.Name + (index < project.attributes.technologies.data.length - 1 ? ", " : "");
   });
+
+  // Get the main button & sort it so it appears first.
+  const mainButton = project.attributes.MainButton;
   
+  const buttonTypes = [
+    { type: "Github" },
+    { type: "Youtube" },
+    { type: "External" },
+  ].sort((a, b) =>
+    a.type === mainButton ? -1 : b.type === mainButton ? 1 : 0
+  );
+
   return (
     <div className="w-full h-full text-white">
       <title>{`${project.attributes.Title} | Kaylee's Portfolio`}</title>
@@ -59,9 +65,9 @@ export default async function Home({params}: any) {
               width: 100%;
               position: fixed;
             }
-
           `}
         </style>
+        
         <div className="mt-64 page-content">
           <div className="flex flex-col gap-8 mb-4">
             <h1 className="text-5xl font-bold"> {project.attributes.Title} </h1>
@@ -74,9 +80,13 @@ export default async function Home({params}: any) {
             </div>
 
             <div className="flex flex-row gap-4 content-center items-center ml-1 mt-7">
-              <Github data={project.attributes} />
-              <Youtube data={project.attributes} />
-              <External data={project.attributes} />
+              {buttonTypes.map(({ type }) => {
+                const data = project.attributes[type];
+                if (!data) return null;
+                return (
+                  <ExternalButton data={data} isMain={type === mainButton} type={type} key={type} />
+                );
+              })}
             </div>
 
             <p className="text-xl py-4">{project.attributes.Summary}</p>
