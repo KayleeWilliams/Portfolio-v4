@@ -65,6 +65,17 @@ export default function ProjectList(props: any) {
               </div>
             </Link>
           ))}
+
+        <div>
+          {selectedOption != null &&
+            technologies.find((technology: any) => technology.id === selectedOption).attributes.projects.data.length === 0 && ( 
+            <div className="text-white pl-6 text-xl font-medium"><p>No projects found.</p></div>
+            )}
+          {selectedOption == null && projects.length === 0 && (
+            <div className="text-white pl-6 text-xl font-medium"><p>No projects found.</p></div>
+          )}
+        </div>
+        
       </div>
     </div>
   );

@@ -8,7 +8,6 @@ export default function ExternalButton(props: any) {
   const type = props.type;
   const main = props.isMain;
 
-  console.log(props)
   return (
     <>
       { main && (

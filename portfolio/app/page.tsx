@@ -24,8 +24,13 @@ async function getData(url: string) {
 export default async function Home() {
   const banners: object = await getData("http://localhost:1337/api/fields?populate=%2A");
   const projects: any = await getData("http://localhost:1337/api/projects?populate=%2A&sort=id:desc");
-  const technologies: any = await getData("http://localhost:1337/api/technologies?populate=projects.Thumbnail&populate=projects.Slug");
-
+  var technologies: any = await getData("http://localhost:1337/api/technologies?populate=projects.Thumbnail&populate=projects.Slug");
+  
+  // Sort technologies by number of projects.
+  technologies = technologies.sort((a: any, b: any) => {
+    return b.attributes.projects.data.length - a.attributes.projects.data.length;
+  });
+  
   return (
     <div>
       <title> Kaylee's Portfolio </title>

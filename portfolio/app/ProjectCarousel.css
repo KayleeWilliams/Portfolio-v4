@@ -26,7 +26,7 @@
 }
 
 .project-carousel .swiper-button-next {
-  background-color: hsla(274, 16%, 14%, 0.4);
+  background-color: var(--background-color);
   display: flex;
   height: 110%;
   width: 3.5%;
@@ -34,7 +34,7 @@
 }
 
 .project-carousel .swiper-button-prev {
-  background-color: hsla(274, 16%, 14%, 0.4);
+  background-color: var(--background-color);
   display: flex;
   height: 110%;
   width: 3.5%;

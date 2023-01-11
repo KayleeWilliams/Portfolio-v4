@@ -56,10 +56,9 @@ export default async function Home({params}: any) {
               background-image: radial-gradient(
                   farthest-side at 73% 21%,
                   transparent,
-                  rgb(26, 29, 41)
+                  rgb(25, 22, 28)
                 ),
-                url(http://localhost:1337${project.attributes.Cover.data
-                  .attributes.url});
+                url(http://localhost:1337${project.attributes.Cover.data.attributes.url});
               background-size: cover;
               background-position: center;
               width: 100%;
@@ -67,7 +66,7 @@ export default async function Home({params}: any) {
             }
           `}
         </style>
-        
+
         <div className="mt-64 page-content">
           <div className="flex flex-col gap-8 mb-4">
             <h1 className="text-5xl font-bold"> {project.attributes.Title} </h1>
@@ -84,7 +83,12 @@ export default async function Home({params}: any) {
                 const data = project.attributes[type];
                 if (!data) return null;
                 return (
-                  <ExternalButton data={data} isMain={type === mainButton} type={type} key={type} />
+                  <ExternalButton
+                    data={data}
+                    isMain={type === mainButton}
+                    type={type}
+                    key={type}
+                  />
                 );
               })}
             </div>

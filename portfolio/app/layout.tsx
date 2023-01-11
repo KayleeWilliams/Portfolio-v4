@@ -16,7 +16,7 @@ export default function RootLayout({children,}: {children: React.ReactNode;}) {
     if (
       document.body.scrollTop > 20 || document.documentElement.scrollTop > 20
     ) {
-      document.getElementById("navbar").style.background = "hsla(274, 16%, 14%, 1)";
+      document.getElementById("navbar").style.background = "hsla(270, 12%, 3%, 1)";
 
     } else {
       document.getElementById("navbar").style.background = "hsla(274, 16%, 14%, 0)";
@@ -29,7 +29,7 @@ export default function RootLayout({children,}: {children: React.ReactNode;}) {
 
   return (
     <html>
-      <body className="bg-[#241E29] flex flex-col">
+      <body className="bg-[#19161c] flex flex-col">
         <div
           id="navbar"
           className="flex flex-row fixed gap-8 text-sm font-[500] tracking-wider uppercase text-white pl-32 py-4 w-full z-50 top-0"
