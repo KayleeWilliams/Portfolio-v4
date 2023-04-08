@@ -1,9 +1,6 @@
 .project {
-  width: calc(25% - 20px);
   position: relative;
-  margin-top: 20px;
-  margin-left: 20px;
-  border: 0;
+  width: 100%;
 }
 
 .project :hover {

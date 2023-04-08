@@ -18,16 +18,19 @@ export default function ProjectList(props: any) {
   };
   
   return (
-    <div className="w-screen flex-shrink-0 px-16 mt-16 flex flex-col gap-8">
-      <div className="flex flex-row gap-4 items-center content-center">
-        <h1 className="text-white font-bold text-5xl">My Projects</h1>
+    <div className="w-screen px-16 mt-32 lg:mt-16 flex flex-col gap-8">
+      <div className="flex flex-row gap-8 items-center">
+        <h1 className="text-white font-bold text-6xl lg:text-5xl">
+          My Projects
+        </h1>
         <Dropdown
           data={technologies}
           selected={selectedOption}
           setSelected={setSelected}
         />
       </div>
-      <div className="flex flex-row flex-wrap align-center w-full ml-[-20px]">
+
+      <div className="grid grid-rows-auto grid-cols-1 gap-4 lg:grid-cols-3 align-center w-full">
         {selectedOption != null &&
           technologies
             .find((technology: any) => technology.id === selectedOption)
@@ -37,15 +40,13 @@ export default function ProjectList(props: any) {
               <Link
                 href={`/projects/${project.attributes.Slug}`}
                 key={project.id}
-                className="project"
+                className="relative w-full pt-[56.25%]"
               >
-                <div className="project-container">
-                  <Image
-                    src={`http://localhost:1337${project.attributes.Thumbnail.data.attributes.url}`}
-                    alt={project.attributes.Title}
-                    fill
-                  />
-                </div>
+                <Image
+                  src={`http://localhost:1337${project.attributes.Thumbnail.data.attributes.url}`}
+                  alt={project.attributes.Title}
+                  fill
+                />
               </Link>
             ))}
 
@@ -54,28 +55,31 @@ export default function ProjectList(props: any) {
             <Link
               href={`/projects/${project.attributes.Slug}`}
               key={project.id}
-              className="project"
+              className="relative w-full pt-[56.25%]"
             >
-              <div className="project-container">
-                <Image
-                  src={`http://localhost:1337${project.attributes.Thumbnail.data.attributes.url}`}
-                  alt={project.attributes.Title}
-                  fill
-                />
-              </div>
+              <Image
+                src={`http://localhost:1337${project.attributes.Thumbnail.data.attributes.url}`}
+                alt={project.attributes.Title}
+                fill
+              />
             </Link>
           ))}
 
         <div>
           {selectedOption != null &&
-            technologies.find((technology: any) => technology.id === selectedOption).attributes.projects.data.length === 0 && ( 
-            <div className="text-white pl-6 text-xl font-medium"><p>No projects found.</p></div>
+            technologies.find(
+              (technology: any) => technology.id === selectedOption
+            ).attributes.projects.data.length === 0 && (
+              <div className="text-white pl-6 text-xl font-medium">
+                <p>No projects found.</p>
+              </div>
             )}
           {selectedOption == null && projects.length === 0 && (
-            <div className="text-white pl-6 text-xl font-medium"><p>No projects found.</p></div>
+            <div className="text-white pl-6 text-xl font-medium">
+              <p>No projects found.</p>
+            </div>
           )}
         </div>
-        
       </div>
     </div>
   );
