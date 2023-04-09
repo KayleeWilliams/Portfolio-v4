@@ -7,11 +7,11 @@ export default function ProjectList(props: any) {
   return (
     <div>
       {technologies.map((technology: any) => (
-        <div key={technology.id}>
+        <div key={technology.id} className="mb-4">
           {technology.attributes.projects.data.length > 0 &&
             technology.attributes.Category && (
               <div className="flex flex-col mb-2">
-                <h1 className="text-white font-bold text-xl">
+                <h1 className="text-white font-bold text-3xl lg:text-xl tracking-wider">
                   {technology.attributes.Name} Projects
                 </h1>
                 <ProjectCarousel

@@ -7,10 +7,10 @@ export default function Navigation() {
     <>
       <div
         id="navbar"
-        className="flex flex-row fixed gap-8 text-3xl lg:text-sm font-[500] tracking-wider uppercase text-white pl-32 py-4 w-full z-50 top-0"
+        className="flex flex-row fixed gap-8 text-3xl lg:text-xl font-[500] tracking-wider uppercase text-white py-4 w-full justify-center lg:justify-start lg:pl-16 z-50 top-0"
       >
-        <Link href="/" className="flex flex-row items-center gap-1 group">
-          <div className="w-8 h-8 lg:w-4 lg:h-4">
+        <Link href="/" className="flex flex-row items-center gap-2 group">
+          <div className="w-8 h-8">
             <AiFillHome className="icon" />
           </div>
           <p className="group-hover:opacity-70 ease-in-out duration-300 delay-100">
@@ -19,25 +19,25 @@ export default function Navigation() {
         </Link>
         <Link
           href="/projects"
-          className="flex flex-row items-center gap-1 group"
+          className="flex flex-row items-center gap-2 group"
         >
-          <div className="w-8 h-8 lg:w-4 lg:h-4">
+          <div className="w-8 h-8">
             <AiOutlineCode className="icon" />
           </div>
           <p className="group-hover:opacity-70 ease-in-out duration-300 delay-100">
             My Projects
           </p>
         </Link>
-        <Link href="/about" className="flex flex-row items-center gap-1 group">
-          <div className="w-8 h-8 lg:w-4 lg:h-4">
+        <Link href="/about" className="flex flex-row items-center gap-2 group">
+          <div className="w-8 h-8">
             <AiOutlineUser className="icon" />
           </div>
           <p className="group-hover:opacity-70 ease-in-out duration-300 delay-100">
             About Me
           </p>
         </Link>
-        <Link href="/cv" className="flex flex-row items-center gap-1 group">
-          <div className="w-8 h-8 lg:w-4 lg:h-4">
+        <Link href="/cv" className="flex flex-row items-center gap-2 group">
+          <div className="w-8 h-8">
             <MdContactPage className="icon" />
           </div>
           <p className="group-hover:opacity-70 ease-in-out duration-300 delay-100">

@@ -42,7 +42,7 @@ export default function RootLayout({
     <html>
       <body className="bg-black">
         <Navigation />
-        <main className="mb-4">{children}</main>
+        <main className="mb-4 min-h-screen">{children}</main>
         <footer className="bg-[#080709] flex flex-col w-full text-center justify-center align-center h-12 z-auto bottom-0 opacity-100">
           <p className="text-sm text-white"> Created by Kaylee Williams </p>
         </footer>

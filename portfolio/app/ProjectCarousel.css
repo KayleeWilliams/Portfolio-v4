@@ -1,71 +1,56 @@
-.project-carousel {
+.projects {
   width: 100%;
   height: 100%;
 }
 
-.project-carousel .swiper-wrapper {
-  padding-top: 16px;
-  padding-bottom: 16px;
+.swiper {
+  width: 100%;
+  height: 100%;
 }
 
-.project-carousel .swiper-slide {
-  padding-top: 10%;
+.projects img {
+  object-fit: cover;
+  width: 100%;
   border-radius: 4px;
-  margin: 0;
+  aspect-ratio: 16/9;
 }
 
-.project-carousel .swiper-slide:hover {
-  border: white solid 4px;
-  z-index: 10;
-  scale: 1.1;
-  transition: ease-in-out 0.4s;
+.partial {
+  opacity: 20%;
 }
 
-.project-carousel .swiper-slide:first-child:hover {
-  margin: 0 1%;
+/* Margins to enable overflows */
+.projects .swiper-slide {
+  margin-top: 4px;
+  opacity: 10%;
 }
 
-.project-carousel .swiper-button-next {
-  background-color: var(--background-color);
-  display: flex;
-  height: 110%;
-  width: 3.5%;
-  right: 0;
+.projects .swiper-slide-active, .projects .swiper-slide-next, .projects .swiper-slide-next + .swiper-slide{
+  opacity: 100%;
 }
 
-.project-carousel .swiper-button-prev {
-  background-color: var(--background-color);
-  display: flex;
-  height: 110%;
-  width: 3.5%;
-  top: 12%;
-  left: 0;
+/* Adjust margins for overflow */
+@media screen and (max-width: 768px) {
+  .projects .swiper-slide {
+    margin-top: 8px;
+  }
 }
 
-.project-carousel .swiper-button-next::after,
-.swiper-button-prev::after {
+.project-list  .swiper-button-next::after, .project-list .swiper-button-prev::after {
+  color: white;
   content: none;
 }
 
-.project-carousel .swiper-button-next {
-  color: white;
-  height: 110%;
-  width: 3%;
-  top: 12%;
+.project-list .swiper:hover .swiper-button-next::after {
+  content: "next"
 }
 
-.project-carousel .swiper-button-disabled {
+.project-list .projects:hover .swiper-button-prev::after {
+  content: "prev"
+}
+
+
+/* If button disabled hide */
+.project-list .swiper .swiper-button-disabled {
   display: none;
-}
-
-.project-carousel:hover .swiper-button-next:hover::after {
-  content: "next";
-}
-
-.project-carousel:hover .swiper-button-prev:hover::after {
-  content: "prev";
-}
-
-.project-carousel img {
-  border-radius: 4px;
 }

@@ -19,7 +19,7 @@ export default function ProjectList(props: any) {
   
   return (
     <div className="w-screen px-16 mt-32 lg:mt-16 flex flex-col gap-8">
-      <div className="flex flex-row gap-8 items-center">
+      <div className="flex flex-row gap-8 items-end">
         <h1 className="text-white font-bold text-6xl lg:text-5xl">
           My Projects
         </h1>
@@ -70,7 +70,7 @@ export default function ProjectList(props: any) {
             technologies.find(
               (technology: any) => technology.id === selectedOption
             ).attributes.projects.data.length === 0 && (
-              <div className="text-white pl-6 text-xl font-medium">
+              <div className="text-white text-xl font-medium">
                 <p>No projects found.</p>
               </div>
             )}
