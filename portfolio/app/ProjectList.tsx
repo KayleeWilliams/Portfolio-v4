@@ -4,6 +4,13 @@ import ProjectCarousel from "./ProjectCarousel";
 export default function ProjectList(props: any) {
   const technologies = props.data;
 
+  // For each project add the host
+  technologies.map((technology: any) => {
+    technology.attributes.projects.data.map((project: any) => {
+      project.attributes.Thumbnail.data.attributes.url = `${process.env.HOST}${project.attributes.Thumbnail.data.attributes.url}`;
+    });
+  });
+  
   return (
     <div>
       {technologies.map((technology: any) => (

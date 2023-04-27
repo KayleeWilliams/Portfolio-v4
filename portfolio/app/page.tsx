@@ -1,12 +1,9 @@
-import dotenv from "dotenv";
 import { Suspense } from "react";
 import HeroCarousel from "./HeroCarousel";
 import ProjectCarousel from "./ProjectCarousel";
 import ProjectList from "./ProjectList";
 
 import Loading from "./loading";
-
-dotenv.config();
 
 async function getData(url: string) {
   const res: any = await fetch(url, {
@@ -20,13 +17,13 @@ async function getData(url: string) {
 
 export default async function Home() {
   const banners: object = await getData(
-    "http://localhost:1337/api/fields?populate=%2A"
+    `${process.env.HOST}/api/fields?populate=%2A`
   );
-  const projects: any = await getData(
-    "http://localhost:1337/api/projects?populate=%2A&sort=id:desc"
+  let projects: any = await getData(
+    `${process.env.HOST}/api/projects?populate=%2A&sort=id:desc`
   );
   var technologies: any = await getData(
-    "http://localhost:1337/api/technologies?populate=projects.Thumbnail&populate=projects.Slug"
+    `${process.env.HOST}/api/technologies?populate=projects.Thumbnail&populate=projects.Slug`
   );
 
   // Sort technologies by number of projects.
@@ -34,6 +31,11 @@ export default async function Home() {
     return (
       b.attributes.projects.data.length - a.attributes.projects.data.length
     );
+  });
+
+  // Add host to project thumbnail
+  projects.map((project: any) => {
+    project.attributes.Thumbnail.data.attributes.url = `${process.env.HOST}${project.attributes.Thumbnail.data.attributes.url}`
   });
 
   return (

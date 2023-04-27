@@ -1,11 +1,10 @@
 import Image from "next/image";
 import ExternalButton from "./ExternalButton";
-import dotenv from "dotenv";
-dotenv.config();
-
 
 async function getProject(params: any) {
-  const url = `http://localhost:1337/api/projects?filters[slug][$eq]=${params.slug}&populate[technologies][populate]=%2A&populate[Cover][populate]=%2A&populate[Logo][populate]=%2A`; 
+
+  const url = `${process.env.HOST}/api/projects?filters[slug][$eq]=${params.slug}&populate[technologies][populate]=%2A&populate[Cover][populate]=%2A&populate[Logo][populate]=%2A`; 
+
   const res: any = await fetch(url, {
     headers: {
       Authorization: `Bearer ${process.env.API_KEY}`,
@@ -45,36 +44,35 @@ export default async function Home({params}: any) {
   return (
     <div className="w-full h-full text-white">
       <title>{`${project.attributes.Title} | Kaylee's Portfolio`}</title>
+
+      <style jsx>
+        {`
+          .cover-bg {
+            background-image: radial-gradient(
+                farthest-side at 73% 21%,
+                transparent,
+                rgb(7, 3, 7)
+              ),
+              url(${process.env.HOST}${project.attributes.Cover.data
+                .attributes.url});
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            width: 100%;
+            position: fixed;
+          }
+        `}
+      </style>
+
       <div className="cover-bg w-full h-1/3 lg:h-full"></div>
-
       <article className="flex flex-col relative min-h-screen">
-        {/* <div className="visable cover-bg-mobile w-full h-1/3 lg:hidden"></div> */}
-        <style jsx>
-          {`
-            .cover-bg {
-              background-image: radial-gradient(
-                  farthest-side at 73% 21%,
-                  transparent,
-                  rgb(0, 0, 13)
-                ),
-                url(http://localhost:1337${project.attributes.Cover.data
-                  .attributes.url});
-              background-size: cover;
-              background-position: center;
-              z-index: -1;
-              width: 100%;
-              position: fixed;
-            }
-          `}
-        </style>
-
         <div className="z-10 px-20">
           <div className="flex flex-col gap-8 mb-4">
             {/* If logo is an attribute not null  */}
             {project.attributes.Logo.data != null ? (
               <div className="w-[35vw] min-w-[100px] max-w-[341px] min-h-[170px] mt-32 flex relative">
                 <Image
-                  src={`http://127.0.0.1:1337${project.attributes.Logo.data.attributes.url}`}
+                  src={`${process.env.HOST}${project.attributes.Logo.data.attributes.url}`}
                   alt={project.attributes.Title}
                   fill
                 />
