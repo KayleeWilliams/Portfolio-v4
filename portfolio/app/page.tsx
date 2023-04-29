@@ -16,7 +16,7 @@ async function getData(url: string) {
 }
 
 export default async function Home() {
-  const banners: object = await getData(
+  const banners: any = await getData(
     `${process.env.HOST}/api/fields?populate=%2A`
   );
   let projects: any = await getData(
@@ -38,10 +38,13 @@ export default async function Home() {
     project.attributes.Thumbnail.data.attributes.url = `${process.env.HOST}${project.attributes.Thumbnail.data.attributes.url}`
   });
 
+  // Add host to banner images
+  banners.map((banner: any) => {
+    banner.attributes.Cover.data.attributes.url = `${process.env.HOST}${banner.attributes.Cover.data.attributes.url}`;
+  });
+
   return (
     <div>
-      <title> Kaylee's Portfolio </title>
-
       <div className="w-screen flex-shrink-0 px-8 mt-16 flex flex-col gap-12">
         <Suspense fallback={<Loading />}>
           <HeroCarousel data={banners} />

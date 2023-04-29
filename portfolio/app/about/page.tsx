@@ -1,12 +1,18 @@
-import dotenv from "dotenv";
 import { remark } from "remark";
+import { Metadata } from "next";
 import html from "remark-html";
 import Contacts from "./contacts";
-dotenv.config();
+
+export const metadata: Metadata = {
+  title: "About | Kaylee's Portfolio",
+  openGraph: {
+    title: "About Kaylee | Kaylee's Portfolio",
+  },
+};
 
 // Get About section from Strapi
 async function getAbout() {
-  const url = `http://localhost:1337/api/about`;
+  const url = `${process.env.HOST}/api/about`;
   const res: any = await fetch(url, {
     headers: {
       Authorization: `Bearer ${process.env.API_KEY}`,
@@ -29,7 +35,6 @@ export default async function Home() {
 
   return (
     <div className="w-full h-full text-white flex flex-col mt-24 align-center items-center leading-6">
-      <title>{`About | Kaylee's Portfolio`}</title>
       <div className="bg-c-4 w-4/6 rounded-md px-12 py-8">
         <h1 className="text-3xl mb-1 font-medium tracking-wide"> About Me</h1>
         <div

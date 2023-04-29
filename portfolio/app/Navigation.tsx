@@ -1,8 +1,39 @@
+"use client";
+
 import Link from "next/link";
 import { AiFillHome, AiOutlineCode, AiOutlineUser } from "react-icons/ai";
 import { MdContactPage } from "react-icons/md";
+import { useEffect } from "react";
 
 export default function Navigation() {
+    useEffect(() => {
+      if (typeof window !== "undefined") {
+        window.addEventListener("scroll", scrollFunction);
+      }
+    }, []);
+
+    function scrollFunction() {
+      const navbar = document.getElementById("navbar");
+      const cover = document.getElementsByClassName("cover-bg");
+
+      if (navbar != null) {
+        if (
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
+        ) {
+          navbar.style.background = "hsla(307, 36%, 5%, 1)";
+        } else {
+          navbar.style.background = "hsla(307, 36%, 5%, 0)";
+        }
+      }
+
+      if (cover != null) {
+        if (cover.length > 0 && 1 - window.scrollY / 500 > 0.2) {
+          cover[0].style.opacity = 1 - window.scrollY / 500;
+        }
+      }
+    }
+
   return (
     <>
       <div
