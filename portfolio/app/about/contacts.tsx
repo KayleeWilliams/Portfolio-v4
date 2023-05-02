@@ -9,7 +9,7 @@ dotenv.config();
 
 // Get About section from Strapi
 async function getContacts() {
-  const url = `http://localhost:1337/api/contact`;
+  const url = `${process.env.HOST}/api/contact`;
   const res: any = await fetch(url, {
     headers: {
       Authorization: `Bearer ${process.env.API_KEY}`,
@@ -22,6 +22,7 @@ async function getContacts() {
 export default async function Contacts() {
   let contacts: any = await getContacts();
 
+  
   // Add mailto: to email
   if (contacts.Email != "") {
     contacts.Email = "mailto:" + contacts.Email;

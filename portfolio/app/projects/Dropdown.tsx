@@ -1,6 +1,6 @@
-// import Select from "react-select";
 "use client";
 import { useState } from "react";
+import { AiFillCaretDown } from "react-icons/ai";
 
 export default function Dropdown({data, selected, setSelected}: any) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -9,7 +9,7 @@ export default function Dropdown({data, selected, setSelected}: any) {
     <div>
       <div
         onClick={() => setDropdownOpen(!dropdownOpen)}
-        className="flex flex-row items-center justify-center rounded-xl text-white gap-2 bg-[#34363D] hover:bg-[#0E0F16] text-2xl w-max px-4 py-1 select-none"
+        className="flex flex-row items-center justify-center rounded-lg text-white gap-2 bg-c-4 hover:bg-[#817280] text-xl w-max px-4 py-1 select-none"
       >
         {selected ? (
           <p> {data[selected - 1].attributes.Name} </p>
@@ -17,25 +17,23 @@ export default function Dropdown({data, selected, setSelected}: any) {
           <p> All </p>
         )}
 
-        <svg className="w-8 h-8" viewBox="0 0 24 24">
-          <path
-            fill="currentColor"
-            d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6l-6-6l1.41-1.41z"
-          />
-        </svg>
+        <AiFillCaretDown />
       </div>
 
       {dropdownOpen && (
-        <div className="bg-[#131313] w-fit flex flex-col gap-2 fixed z-50 py-2 mt-4 select-none rounded-lg">
+        <div className="bg-c-4 w-fit flex flex-col gap-2 fixed z-50 py-2 mt-4 select-none rounded-lg">
           <div
             onClick={() => setSelected(null)}
             className={`${dropdownOpen ? "visible" : "invisible"} 
               ${
-                selected == null ? "font-medium px-3" : "font-base px-8"
-              } text-white w-full hover:bg-[#2A2A2A] flex flex-row items-center`}
+                selected == null
+                  ? "font-medium font-base px-3"
+                  : "font-base px-8"
+              }
+              text-white w-full hover:bg-c-2 hover:text-c-3 hover:font-semibold flex flex-row items-center group transition ease-in-out delay-75 duration-150`}
           >
             {selected == null && (
-              <div className="bg-white w-2 h-2 rounded-full mr-3" />
+              <div className="bg-white group-hover:bg-c-3 w-2 h-2 rounded-full mr-3 transition ease-in-out delay-75 duration-150" />
             )}
 
             <p> All </p>
@@ -51,10 +49,10 @@ export default function Dropdown({data, selected, setSelected}: any) {
                   ? "font-medium px-3"
                   : "font-base px-8"
               } 
-              text-white w-full hover:bg-[#2A2A2A] flex flex-row items-center`}
+              text-white w-full hover:bg-c-2 hover:text-c-3 hover:font-semibold flex flex-row items-center group transition ease-in-out delay-75 duration-150`}
             >
               {selected == technology.id && (
-                <div className="bg-white w-2 h-2 rounded-full mr-3" />
+                <div className="bg-white group-hover:bg-c-3 w-2 h-2 rounded-full mr-3 transition ease-in-out delay-75 duration-150" />
               )}
 
               <p> {technology.attributes.Name} </p>

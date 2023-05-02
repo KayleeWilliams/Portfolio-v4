@@ -44,22 +44,17 @@ export default async function Home() {
   });
 
   return (
-    <div>
-      <div className="w-screen flex-shrink-0 px-8 mt-16 flex flex-col gap-12">
-        <Suspense fallback={<Loading />}>
-          <HeroCarousel data={banners} />
+    <div className="w-screen flex-shrink-0 px-8 mt-16 flex flex-col gap-12">
+      <HeroCarousel data={banners} />
 
-          <div className="flex flex-col gap-4 mb-8">
-            <div className="flex flex-col">
-              <h1 className="text-white font-bold text-3xl lg:text-xl tracking-wide">
-                All Projects
-              </h1>
-              <ProjectCarousel data={projects} />
-            </div>
-
-            <ProjectList data={technologies} />
-          </div>
-        </Suspense>
+      <div className="flex flex-col gap-4 mb-8">
+        <div className="flex flex-col">
+          <h1 className="text-white font-bold text-3xl lg:text-xl tracking-wide">
+            All Projects
+          </h1>
+          <ProjectCarousel data={projects} />
+        </div>
+        <ProjectList data={technologies} />
       </div>
     </div>
   );
