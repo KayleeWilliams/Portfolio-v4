@@ -31,17 +31,17 @@ export default async function Home() {
   let about: any = await getAbout();
 
   // Style the about section
-  about = about.replace(/<h4/g, "<h3 class='text-xl mt-4 font-medium'");
+  about = about.replace(/<h4/g, "<h3 class='text-lg lg:text-xl mt-4 font-medium'");
 
   return (
-    <div className="w-full h-full text-white flex flex-col mt-24 align-center items-center leading-6">
-      <div className="bg-c-4 w-4/6 rounded-md px-12 py-8">
-        <h1 className="text-3xl mb-1 font-medium tracking-wide"> About Me</h1>
+    <div className="w-full h-full text-white flex flex-col mt-16 lg:mt-24 align-center items-center leading-6 text-base lg:text-lg">
+      <div className="bg-c-4 w-11/12 lg:w-4/6 rounded-md px-6 lg:px-12 py-4 lg:py-8">
+        <h1 className="text-2xl lg:text-3xl mb-1 font-medium tracking-wide"> About Me</h1>
         <div
-          className="flex flex-col text-lg"
+          className="flex flex-col"
           dangerouslySetInnerHTML={{ __html: about }}
         ></div>
-        <h1 className="text-3xl mb-1 mt-4 font-medium tracking-wide">
+        <h1 className="text-2xl lg:text-3xl mb-1 mt-4 font-medium tracking-wide">
           Contact Me
         </h1>
         <p>I am always free to chat so feel free to get in contact with me!</p>

@@ -38,10 +38,10 @@ export default function Navigation() {
     <>
       <div
         id="navbar"
-        className="flex flex-row fixed gap-8 text-3xl lg:text-xl font-[500] tracking-wider uppercase text-white py-4 w-full justify-center lg:justify-start lg:pl-16 z-50 top-0"
+        className="flex flex-row fixed gap-2 lg:gap-8 text-sm lg:text-xl font-[500] tracking-wider uppercase text-white py-4 w-full justify-center lg:justify-start px-1 lg:px-0 lg:pl-16 z-50 top-0"
       >
         <Link href="/" className="flex flex-row items-center gap-2 group">
-          <div className="w-8 h-8">
+          <div className="w-6 h-6 lg:w-8 lg:h-8">
             <AiFillHome className="icon" />
           </div>
           <p className="group-hover:opacity-70 ease-in-out duration-300 delay-100">
@@ -52,7 +52,7 @@ export default function Navigation() {
           href="/projects"
           className="flex flex-row items-center gap-2 group"
         >
-          <div className="w-8 h-8">
+          <div className="w-6 h-6 lg:w-8 lg:h-8">
             <AiOutlineCode className="icon" />
           </div>
           <p className="group-hover:opacity-70 ease-in-out duration-300 delay-100">
@@ -60,7 +60,7 @@ export default function Navigation() {
           </p>
         </Link>
         <Link href="/about" className="flex flex-row items-center gap-2 group">
-          <div className="w-8 h-8">
+          <div className="w-6 h-6 lg:w-8 lg:h-8">
             <AiOutlineUser className="icon" />
           </div>
           <p className="group-hover:opacity-70 ease-in-out duration-300 delay-100">

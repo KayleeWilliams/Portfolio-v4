@@ -19,16 +19,24 @@ import { Navigation, Pagination, Autoplay } from "swiper";
 export default function HeroCarousel(props: any) {
   const slides = props.data;
 
+  const breakpoints = {
+    1024: {
+      slidesPerView: 1.1,
+      spaceBetween: 8,
+    },
+  };
+
   return (
     <>
       <div className="relative h-full hero-carousel">
         <Swiper
-          slidesPerView={1.1}
+          slidesPerView={1}
           centeredSlides={true}
           spaceBetween={16}
           loop={true}
           navigation={true}
           modules={[Navigation, Pagination, Autoplay]}
+          breakpoints={breakpoints}
           autoplay={{
             delay: 4000,
             disableOnInteraction: false,

@@ -17,22 +17,22 @@ import "./ProjectCarousel.css";
 export default function ProjectCarousel(props: any) {
   const projects = props.data;
 
-    const breakpoints = {
+  const breakpoints = {
     1024: {
       slidesPerView: 3.2,
-      slidesPerGroup: 2,
-
+      slidesPerGroup: 3,
+      spaceBetween: 8,
     }
   };
 
   return (
     <div className="relative h-full project-list">
       <Swiper
-        slidesPerView={2.2}
+        slidesPerView={2.075}
         slidesPerGroup={1}
-        spaceBetween={16}
+        spaceBetween={2}
         navigation={true}
-        modules={[Navigation, Virtual]} 
+        modules={[Navigation, Virtual]}
         virtual={true}
         watchSlidesProgress={true}
         breakpoints={breakpoints}

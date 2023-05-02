@@ -1,11 +1,8 @@
-import dotenv from "dotenv";
 import Link from "next/link";
 import Discord from "./discord";
 
 // Import Icons
 import { AiFillLinkedin, AiFillGithub, AiFillMail } from "react-icons/ai";
-
-dotenv.config();
 
 // Get About section from Strapi
 async function getContacts() {
@@ -30,7 +27,7 @@ export default async function Contacts() {
 
   return (
     <>
-      <div className="flex flex-row gap-2 mt-2 leading-none">
+      <div className="flex flex-col items-center lg:flex-row gap-2 mt-2 leading-none">
         {/* Check if not none  */}
         {contacts.linkedin !== "" && (
           <Link

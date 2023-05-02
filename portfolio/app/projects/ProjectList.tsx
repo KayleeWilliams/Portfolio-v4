@@ -16,12 +16,12 @@ export default function ProjectList(props: any) {
 
   function setSelected(id: any) {
     setSelectedOption(id);
-  };
-  
+  }
+
   return (
-    <div className="w-screen px-16 mt-32 lg:mt-16 flex flex-col gap-8">
+    <div className="w-screen px-8 lg:px-16 mt-16 flex flex-col gap-8">
       <div className="flex flex-row gap-8 items-end">
-        <h1 className="text-white font-bold text-6xl lg:text-5xl">
+        <h1 className="text-white font-bold text-3xl lg:text-5xl">
           My Projects
         </h1>
         <Dropdown
@@ -38,7 +38,11 @@ export default function ProjectList(props: any) {
             .attributes.projects.data.slice(0)
             .reverse()
             .map((project: any) => (
-              <Link key={project} href={`projects/${project.attributes.Slug}`} className="relative">
+              <Link
+                key={project}
+                href={`projects/${project.attributes.Slug}`}
+                className="relative"
+              >
                 <div className="w-full h-full aspect-video">
                   <Image
                     src={`${host}${project.attributes.Thumbnail.data.attributes.url}`}
@@ -52,7 +56,11 @@ export default function ProjectList(props: any) {
 
         {selectedOption == null &&
           projects.map((project: any) => (
-            <Link key={project} href={`projects/${project.attributes.Slug}`} className="relative">
+            <Link
+              key={project}
+              href={`projects/${project.attributes.Slug}`}
+              className="relative"
+            >
               <div className="w-full h-full aspect-video">
                 <Image
                   src={`${host}${project.attributes.Thumbnail.data.attributes.url}`}

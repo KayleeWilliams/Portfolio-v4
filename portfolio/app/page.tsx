@@ -20,7 +20,7 @@ export default async function Home() {
     `${process.env.HOST}/api/fields?populate=%2A`
   );
   let projects: any = await getData(
-    `${process.env.HOST}/api/projects?populate=%2A&sort=id:desc`
+    `${process.env.HOST}/api/projects?populate=%2A&sort=Date:desc`
   );
   var technologies: any = await getData(
     `${process.env.HOST}/api/technologies?populate=projects.Thumbnail&populate=projects.Slug`
@@ -44,12 +44,12 @@ export default async function Home() {
   });
 
   return (
-    <div className="w-screen flex-shrink-0 px-8 mt-16 flex flex-col gap-12">
+    <div className="w-screen flex-shrink-0 px-4 lg:px-16 mt-16 flex flex-col gap-4 lg:gap-12">
       <HeroCarousel data={banners} />
 
-      <div className="flex flex-col gap-4 mb-8">
+      <div className="flex flex-col gap-1 lg:gap-4 mb-8">
         <div className="flex flex-col">
-          <h1 className="text-white font-bold text-3xl lg:text-xl tracking-wide">
+          <h1 className="text-white font-bold text-base lg:text-xl tracking-wider">
             All Projects
           </h1>
           <ProjectCarousel data={projects} />

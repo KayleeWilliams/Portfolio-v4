@@ -21,7 +21,7 @@ async function getData(url: string) {
 
 export default async function Projects() {
   const projects: any = await getData(
-    `${process.env.HOST}/api/projects?populate=%2A&sort=id:desc`
+    `${process.env.HOST}/api/projects?populate=%2A&sort=Date:desc`
   );
 
   const technologies: any = await getData(

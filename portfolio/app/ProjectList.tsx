@@ -18,7 +18,7 @@ export default function ProjectList(props: any) {
           {technology.attributes.projects.data.length > 0 &&
             technology.attributes.Category && (
               <div className="flex flex-col mb-2">
-                <h1 className="text-white font-bold text-3xl lg:text-xl tracking-wider">
+                <h1 className="text-white font-bold text-base lg:text-xl tracking-wider">
                   {technology.attributes.Name} Projects
                 </h1>
                 <ProjectCarousel
