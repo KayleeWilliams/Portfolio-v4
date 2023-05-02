@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --background-color: hsla(270, 12%, 10%, 0.4);
+  --background-color: hsla(307, 36%, 5%, 0.4);
 }
 
 #navbar {
-  background-color:hsla(270, 13%, 3%, 0);
+  background-color:hsla(307, 36%, 5%, 0);
   transition: background-color 0.2s ease-in-out;
 }
 

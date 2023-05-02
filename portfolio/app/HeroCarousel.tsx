@@ -42,9 +42,10 @@ export default function HeroCarousel(props: any) {
                 <Link href={slide.attributes.Link}>
                   <div className="w-full h-full aspect-[320/93]">
                     <Image
-                      src={`http://localhost:1337${slide.attributes.Cover.data.attributes.url}`}
+                      src={`${slide.attributes.Cover.data.attributes.url}`}
                       alt={slide.attributes.Title}
                       fill
+                      priority
                       className="transition ease-in-out delay-150 border-4 border-transparent hover:-translate-y-1 hover:border-white duration-300"
                     />
                   </div>
