@@ -67,14 +67,6 @@ export default function Navigation() {
             About Me
           </p>
         </Link>
-        <Link href="/cv" className="flex flex-row items-center gap-2 group">
-          <div className="w-8 h-8">
-            <MdContactPage className="icon" />
-          </div>
-          <p className="group-hover:opacity-70 ease-in-out duration-300 delay-100">
-            My CV
-          </p>
-        </Link>
       </div>
     </>
   );
