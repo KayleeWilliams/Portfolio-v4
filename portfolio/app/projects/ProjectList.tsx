@@ -7,16 +7,31 @@ import Link from "next/link";
 import Dropdown from "./Dropdown";
 import "./projects.css";
 
-export default function ProjectList(props: any) {
+interface Props {
+  data: {
+    projects: Array<Object>;
+    technologies: Array<Technology>;
+    host: string;
+  };
+}
+
+interface Technology {
+  id: number;
+  attributes: {
+    Name: string;
+    Category: boolean;
+    projects: {
+      data: Array<Object>;
+    };
+  };
+}
+
+export default function ProjectList(props: Props) {
   const projects = props.data.projects;
   const technologies = props.data.technologies;
   const host = props.data.host;
 
   const [selectedOption, setSelectedOption] = useState(null);
-
-  function setSelected(id: any) {
-    setSelectedOption(id);
-  }
 
   return (
     <div className="w-screen px-8 lg:px-16 mt-16 flex flex-col gap-8">
@@ -27,15 +42,15 @@ export default function ProjectList(props: any) {
         <Dropdown
           data={technologies}
           selected={selectedOption}
-          setSelected={setSelected}
+          setSelectedOption={setSelectedOption}
         />
       </div>
 
       <div className="grid grid-rows-auto grid-cols-1 gap-4 lg:grid-cols-3 align-center w-full">
         {selectedOption != null &&
           technologies
-            .find((technology: any) => technology.id === selectedOption)
-            .attributes.projects.data.slice(0)
+            .find((technology: Technology) => technology.id === selectedOption)
+            ?.attributes?.projects?.data.slice(0)
             .reverse()
             .map((project: any) => (
               <Link
@@ -75,8 +90,8 @@ export default function ProjectList(props: any) {
         <div>
           {selectedOption != null &&
             technologies.find(
-              (technology: any) => technology.id === selectedOption
-            ).attributes.projects.data.length === 0 && (
+              (technology: Technology) => technology.id === selectedOption
+            )?.attributes.projects?.data.length === 0 && (
               <div className="text-white text-xl font-medium">
                 <p>No projects found.</p>
               </div>

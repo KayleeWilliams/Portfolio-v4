@@ -3,7 +3,7 @@ import Image from "next/image";
 import ExternalButton from "./ExternalButton";
 
 async function getProject(slug: string) {
-  const url = `${process.env.HOST}/api/projects?filters[slug][$eq]=${slug}&populate[technologies][populate]=%2A&populate[Cover][populate]=%2A&populate[Logo][populate]=%2A&populate[Thumbnail][populate]=%2A`;
+  const url = `${process.env.HOST}/api/projects?filters[slug][$eq]=${slug}&populate[technologies][populate]=*&populate[Cover][populate]=%2A&populate[Logo][populate]=%2A&populate[Thumbnail][populate]=%2A`;
 
   const res: any = await fetch(url, {
     headers: {
@@ -145,14 +145,17 @@ export default async function Home({ params }: Props) {
                 {project.attributes.technologies.data.map(
                   (technology: any, index: number) => (
                     <div key="index" className="flex flex-row gap-2 mb-2 lg:mb-4">
-                      <div className="w-6 h-6 relative">
-                        <Image
-                          src={`${technology.attributes.IconUrl}?color=%23ffffff`}
-                          alt={technology.attributes.Name}
-                          fill
-                        />
-                      </div>
-
+                      { technology.attributes.Icon.data != null ? (
+                        <div className="w-6 h-6 relative text-white">
+                          <Image
+                            src={`${process.env.HOST}${technology.attributes.Icon.data.attributes.url}`}
+                            alt={technology.attributes.Name}
+                            style={{ filter: 'invert(100%) sepia(100%) hue-rotate(180deg)' }}
+                            fill
+                          />
+                        </div>
+                      ) : <div />
+                      }
                       <p>{technology.attributes.Name}</p>
                     </div>
                   )

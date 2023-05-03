@@ -2,8 +2,27 @@
 import { useState } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 
-export default function Dropdown({data, selected, setSelected}: any) {
+interface Technology {
+  id: number;
+  attributes: {
+    Name: string;
+    Category: boolean;
+    projects: {
+      data: Array<Object>;
+    };
+  };
+}
+
+interface Props {
+  data: Array<Technology>;
+  selected: number | null;
+  setSelectedOption: Function;
+}
+
+export default function Dropdown({ data, selected, setSelectedOption}: Props) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  console.log(data[0].attributes.Name)
 
   return (
     <div>
@@ -12,7 +31,7 @@ export default function Dropdown({data, selected, setSelected}: any) {
         className="flex flex-row items-center justify-center rounded-lg text-white gap-2 bg-c-4 hover:bg-[#817280] text-xl w-max px-4 py-1 select-none"
       >
         {selected ? (
-          <p> {data[selected - 1].attributes.Name} </p>
+          <p> {data.find((tech) => tech.id == (selected))?.attributes.Name} </p>
         ) : (
           <p> All </p>
         )}
@@ -23,7 +42,7 @@ export default function Dropdown({data, selected, setSelected}: any) {
       {dropdownOpen && (
         <div className="bg-c-4 w-fit flex flex-col gap-2 fixed z-50 py-2 mt-4 select-none rounded-lg">
           <div
-            onClick={() => setSelected(null)}
+            onClick={() => setSelectedOption(null)}
             className={`${dropdownOpen ? "visible" : "invisible"} 
               ${
                 selected == null
@@ -42,7 +61,7 @@ export default function Dropdown({data, selected, setSelected}: any) {
           {data.map((technology: any) => (
             <div
               key={technology.id}
-              onClick={() => setSelected(technology.id)}
+              onClick={() => setSelectedOption(technology.id)}
               className={`${dropdownOpen ? "visible" : "invisible"} 
               ${
                 selected == technology.id
