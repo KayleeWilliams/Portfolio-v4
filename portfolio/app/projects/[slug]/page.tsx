@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { redirect } from "next/navigation";
+
 
 import ExternalButton from "./ExternalButton";
 
@@ -11,6 +13,7 @@ async function getProject(slug: string) {
     },
   }).then((res) => res.json());
 
+  
   return res.data[0];
 }
 
@@ -22,22 +25,29 @@ type Props = {
 
 export async function generateMetadata({ params }: Props) {
   const project: any = await getProject(params.slug);
-  
-  return {
-    title: `${project.attributes.Title} | Kaylee's Portfolio`,
-    description: project.attributes.Summary,
-    openGraph: {
+
+  // Check if project exists and redirect if not.
+  if (typeof project === "undefined") {
+    redirect("/projects");
+  } 
+
+  else {
+    return {
       title: `${project.attributes.Title} | Kaylee's Portfolio`,
       description: project.attributes.Summary,
-      images: [
-        {
-          url: `${process.env.HOST}${project.attributes.Thumbnail.data.attributes.url}`,
-          alt: project.attributes.Title,
-        },
-      ],
-      url: `https://kayleewilliams.dev/projects/${project.attributes.Slug}`,
-    }
-  };
+      openGraph: {
+        title: `${project.attributes.Title} | Kaylee's Portfolio`,
+        description: project.attributes.Summary,
+        images: [
+          {
+            url: `${process.env.HOST}${project.attributes.Thumbnail.data.attributes.url}`,
+            alt: project.attributes.Title,
+          },
+        ],
+        url: `https://kayleewilliams.dev/projects/${project.attributes.Slug}`,
+      }
+    };
+  }
 }
 
 export default async function Home({ params }: Props) {

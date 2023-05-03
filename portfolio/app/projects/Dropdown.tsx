@@ -22,8 +22,6 @@ interface Props {
 export default function Dropdown({ data, selected, setSelectedOption}: Props) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  console.log(data[0].attributes.Name)
-
   return (
     <div>
       <div
