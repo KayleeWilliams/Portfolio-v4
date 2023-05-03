@@ -4,21 +4,12 @@ import Discord from "./discord";
 // Import Icons
 import { AiFillLinkedin, AiFillGithub, AiFillMail } from "react-icons/ai";
 
-// Get About section from Strapi
-async function getContacts() {
-  const url = `${process.env.HOST}/api/contact`;
-  const res: any = await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${process.env.API_KEY}`,
-    },
-  }).then((res) => res.json());
-
-  return res.data.attributes;
+interface Props {
+  contacts: Object;
 }
 
-export default async function Contacts() {
-  let contacts: any = await getContacts();
-
+export default function Contacts(props: Props) {
+  let contacts: any = props.contacts;
   
   // Add mailto: to email
   if (contacts.Email != "") {

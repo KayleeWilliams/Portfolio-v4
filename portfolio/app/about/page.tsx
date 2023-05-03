@@ -27,8 +27,20 @@ async function getAbout() {
   return content;
 }
 
+async function getContacts() {
+  const url = `${process.env.HOST}/api/contact`;
+  const res: any = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${process.env.API_KEY}`,
+    },
+  }).then((res) => res.json());
+
+  return res.data.attributes;
+}
+
 export default async function Home() {
   let about: any = await getAbout();
+  let contacts: any = await getContacts();
 
   // Style the about section
   about = about.replace(/<h4/g, "<h3 class='text-lg lg:text-xl mt-4 font-medium'");
@@ -45,7 +57,7 @@ export default async function Home() {
           Contact Me
         </h1>
         <p>I am always free to chat so feel free to get in contact with me!</p>
-        <Contacts />
+        <Contacts contacts={contacts} />
       </div>
     </div>
   );

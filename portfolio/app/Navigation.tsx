@@ -27,9 +27,12 @@ export default function Navigation() {
         }
       }
 
-      if (cover != null) {
-        if (cover.length > 0 && 1 - window.scrollY / 500 > 0.2) {
-          cover[0].style.opacity = 1 - window.scrollY / 500;
+      if (cover != null && cover.length > 0) {
+        const coverElement = cover[0] as HTMLElement;
+        if (1 - window.scrollY / 500 > 0.2) {
+          coverElement.style.opacity = `${1 - window.scrollY / 500}`;
+        } else {
+          coverElement.style.opacity = "0";
         }
       }
     }

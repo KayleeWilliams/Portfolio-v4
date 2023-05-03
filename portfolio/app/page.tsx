@@ -1,9 +1,6 @@
-import { Suspense } from "react";
 import HeroCarousel from "./HeroCarousel";
 import ProjectCarousel from "./ProjectCarousel";
 import ProjectList from "./ProjectList";
-
-import Loading from "./loading";
 
 async function getData(url: string) {
   const res: any = await fetch(url, {

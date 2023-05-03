@@ -2,8 +2,8 @@ import Image from "next/image";
 
 import ExternalButton from "./ExternalButton";
 
-async function getProject(params: any) {
-  const url = `${process.env.HOST}/api/projects?filters[slug][$eq]=${params.slug}&populate[technologies][populate]=%2A&populate[Cover][populate]=%2A&populate[Logo][populate]=%2A&populate[Thumbnail][populate]=%2A`;
+async function getProject(slug: string) {
+  const url = `${process.env.HOST}/api/projects?filters[slug][$eq]=${slug}&populate[technologies][populate]=%2A&populate[Cover][populate]=%2A&populate[Logo][populate]=%2A&populate[Thumbnail][populate]=%2A`;
 
   const res: any = await fetch(url, {
     headers: {
@@ -14,8 +14,14 @@ async function getProject(params: any) {
   return res.data[0];
 }
 
-export async function generateMetadata({ params }: object) {
-  const project: any = await getProject(params);
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
+export async function generateMetadata({ params }: Props) {
+  const project: any = await getProject(params.slug);
   
   return {
     title: `${project.attributes.Title} | Kaylee's Portfolio`,
@@ -34,8 +40,8 @@ export async function generateMetadata({ params }: object) {
   };
 }
 
-export default async function Home({ params }: object) {
-  const project: any = await getProject(params);
+export default async function Home({ params }: Props) {
+  const project: any = await getProject(params.slug);
 
   let projectDate: any = new Date(project.attributes.Date);
   projectDate = projectDate.toLocaleString("en-GB", {

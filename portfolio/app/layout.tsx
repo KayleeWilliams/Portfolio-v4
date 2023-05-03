@@ -1,12 +1,10 @@
 import { Metadata } from "next";
-import { Suspense } from "react";
 import Link from "next/link";
 import "./global.css";
 
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import { BsMastodon } from "react-icons/bs";
 import Navigation from "./Navigation";
-import Loading from "./loading";
 
 export const metadata: Metadata = {
   title: "Kaylee Williams Portfolio",
