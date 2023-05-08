@@ -1,8 +1,7 @@
 "use client";
 
 // Import Swiper React components
-import React from "react";
-import Image from 'next/image';
+import Image from "next/image";
 import Link from "next/link";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,12 +13,16 @@ import "swiper/css/pagination";
 
 import "./HeroCarousel.css";
 // import required modules
-import { Navigation, Pagination, Autoplay } from "swiper";
+import { Autoplay, Navigation, Pagination } from "swiper";
 
 export default function HeroCarousel(props: any) {
   const slides = props.data;
 
   const breakpoints = {
+    0: {
+      slidesPerView: 1,
+      spaceBetween: 8,
+    },
     1024: {
       slidesPerView: 1.1,
       spaceBetween: 8,
@@ -30,7 +33,7 @@ export default function HeroCarousel(props: any) {
     <>
       <div className="relative h-full hero-carousel">
         <Swiper
-          slidesPerView={1}
+          slidesPerView="auto"
           centeredSlides={true}
           spaceBetween={16}
           loop={true}

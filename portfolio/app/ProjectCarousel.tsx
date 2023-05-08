@@ -30,7 +30,7 @@ export default function ProjectCarousel(props: any) {
       <Swiper
         slidesPerView={2.075}
         slidesPerGroup={1}
-        spaceBetween={2}
+        spaceBetween={4}
         navigation={true}
         modules={[Navigation, Virtual]}
         virtual={true}
@@ -42,12 +42,11 @@ export default function ProjectCarousel(props: any) {
           <SwiperSlide key={project.id} virtualIndex={index}>
             {({ isVisible }) => (
               <Link href={`projects/${project.attributes.Slug}`}>
-                <div className="w-full h-full aspect-video">
+                <div className="w-full h-full aspect-video transition ease-in-out delay-150 border-0 hover:border-4 border-transparent hover:-translate-y-1 hover:border-white duration-300">
                   <Image
                     src={`${project.attributes.Thumbnail.data.attributes.url}`}
                     alt={project.attributes.Title}
                     fill
-                    className="transition ease-in-out delay-150 border-4 border-transparent hover:-translate-y-1 hover:border-white duration-300"
                   />
                 </div>
               </Link>
