@@ -46,7 +46,7 @@ export default function ProjectList(props: Props) {
         />
       </div>
 
-      <div className="grid grid-rows-auto grid-cols-1 gap-4 lg:grid-cols-3 align-center w-full">
+      <div className="grid grid-rows-auto grid-cols-1 gap-2 lg:gap-4 lg:grid-cols-3 align-center w-full">
         {selectedOption != null &&
           technologies
             .find((technology: Technology) => technology.id === selectedOption)
@@ -57,13 +57,14 @@ export default function ProjectList(props: Props) {
                 key={project}
                 href={`projects/${project.attributes.Slug}`}
                 className="relative"
+                aria-label={project.attributes.Title}
               >
-                <div className="w-full h-full aspect-video">
+                <div className="w-full h-full aspect-video transition ease-in-out delay-150 border-4 border-transparent hover:-translate-y-1 hover:border-white duration-300">
                   <Image
                     src={`${host}${project.attributes.Thumbnail.data.attributes.url}`}
                     alt={project.attributes.Title}
                     fill
-                    className="transition ease-in-out delay-150 border-4 border-transparent hover:-translate-y-1 hover:border-white duration-300"
+                    priority
                   />
                 </div>
               </Link>
@@ -75,13 +76,14 @@ export default function ProjectList(props: Props) {
               key={project}
               href={`projects/${project.attributes.Slug}`}
               className="relative"
+              aria-label={project.attributes.Title}
             >
-              <div className="w-full h-full aspect-video">
+              <div className="w-full h-full aspect-video transition ease-in-out delay-150 border-4 border-transparent hover:-translate-y-1 hover:border-white duration-300">
                 <Image
                   src={`${host}${project.attributes.Thumbnail.data.attributes.url}`}
                   alt={project.attributes.Title}
                   fill
-                  className="transition ease-in-out delay-150 border-4 border-transparent hover:-translate-y-1 hover:border-white duration-300"
+                  priority
                 />
               </div>
             </Link>

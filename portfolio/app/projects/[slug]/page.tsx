@@ -5,12 +5,13 @@ import { redirect } from "next/navigation";
 import ExternalButton from "./ExternalButton";
 
 async function getProject(slug: string) {
-  const url = `${process.env.HOST}/api/projects?filters[slug][$eq]=${slug}&populate[technologies][populate]=*&populate[Cover][populate]=%2A&populate[Logo][populate]=%2A&populate[Thumbnail][populate]=%2A`;
+  const url = `${process.env.HOST}/api/projects?filters[slug][$eq]=${slug}&populate[Logo][populate]=%2A&populate[Cover][populate]=%2A&populate[Thumbnail][populate]=%2A&populate[technologies][populate]=Icon`;
 
   const res: any = await fetch(url, {
     headers: {
       Authorization: `Bearer ${process.env.API_KEY}`,
     },
+    next: { revalidate: 300 }
   }).then((res) => res.json());
 
   

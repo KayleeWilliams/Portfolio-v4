@@ -1,12 +1,16 @@
 import HeroCarousel from "./HeroCarousel";
 import ProjectCarousel from "./ProjectCarousel";
 import ProjectList from "./ProjectList";
+import Loading from "./loading";
+import { Suspense } from "react";
+
 
 async function getData(url: string) {
   const res: any = await fetch(url, {
     headers: {
       Authorization: `Bearer ${process.env.API_KEY}`,
     },
+    next: { revalidate: 300 },
   }).then((res) => res.json());
 
   return res.data;
@@ -42,7 +46,9 @@ export default async function Home() {
 
   return (
     <div className="w-screen flex-shrink-0 px-4 lg:px-16 mt-16 flex flex-col gap-4 lg:gap-12">
-      <HeroCarousel data={banners} />
+      <Suspense fallback={<Loading />}>
+        <HeroCarousel data={banners} />
+      </Suspense>
 
       <div className="flex flex-col gap-1 lg:gap-4 mb-8">
         <div className="flex flex-col">

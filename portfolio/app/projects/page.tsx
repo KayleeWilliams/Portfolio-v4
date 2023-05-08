@@ -14,6 +14,7 @@ async function getData(url: string) {
     headers: {
       Authorization: `Bearer ${process.env.API_KEY}`,
     },
+    next: { revalidate: 300 },
   }).then((res) => res.json());
 
   return res.data;
@@ -25,7 +26,7 @@ export default async function Projects() {
   );
 
   const technologies: any = await getData(
-    `${process.env.HOST}/api/technologies?populate=projects.Thumbnail`
+    `${process.env.HOST}/api/technologies?populate=projects.Thumbnail&populate=projects.Slug`
   );
 
   const host: string = process.env.HOST as string;

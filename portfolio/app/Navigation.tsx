@@ -43,7 +43,11 @@ export default function Navigation() {
         id="navbar"
         className="flex flex-row fixed gap-2 lg:gap-8 text-sm lg:text-xl font-[500] tracking-wider uppercase text-white py-4 w-full justify-center lg:justify-start px-1 lg:px-0 lg:pl-16 z-50 top-0"
       >
-        <Link href="/" className="flex flex-row items-center gap-2 group">
+        <Link
+          href="/"
+          className="flex flex-row items-center gap-2 group"
+          aria-label="Home"
+        >
           <div className="w-6 h-6 lg:w-8 lg:h-8">
             <AiFillHome className="icon" />
           </div>
@@ -54,6 +58,7 @@ export default function Navigation() {
         <Link
           href="/projects"
           className="flex flex-row items-center gap-2 group"
+          aria-label="Projects"
         >
           <div className="w-6 h-6 lg:w-8 lg:h-8">
             <AiOutlineCode className="icon" />
@@ -62,7 +67,11 @@ export default function Navigation() {
             My Projects
           </p>
         </Link>
-        <Link href="/about" className="flex flex-row items-center gap-2 group">
+        <Link
+          href="/about"
+          className="flex flex-row items-center gap-2 group"
+          aria-label="About Me"
+        >
           <div className="w-6 h-6 lg:w-8 lg:h-8">
             <AiOutlineUser className="icon" />
           </div>

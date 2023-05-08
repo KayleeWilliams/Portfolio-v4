@@ -33,6 +33,7 @@ async function getContacts() {
     headers: {
       Authorization: `Bearer ${process.env.API_KEY}`,
     },
+    next: { revalidate: 300 },
   }).then((res) => res.json());
 
   return res.data.attributes;
