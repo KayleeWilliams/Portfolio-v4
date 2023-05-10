@@ -107,7 +107,7 @@ export default async function Home({ params }: Props) {
           <div className="flex flex-col gap-8 mb-2 lg:mb-4">
             {/* If logo is an attribute not null  */}
             {project.attributes.Logo.data != null ? (
-              <div className="lg:w-[35vw] min-w-[100px] max-w-[341px] min-h-[170px] mt-32 flex relative">
+              <div className="lg:w-[35vw] min-w-[100px] max-w-[341px] min-h-[170px] mt-32 flex relative aspect-[1440/810]">
                 <Image
                   src={`${process.env.HOST}${project.attributes.Logo.data.attributes.url}`}
                   alt={project.attributes.Title}
