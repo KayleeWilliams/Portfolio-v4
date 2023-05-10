@@ -82,16 +82,26 @@ export default async function Home({ params }: Props) {
 
   return (
     <div className="w-full h-full text-white">
-      <div
-        className="w-full h-3/4 lg:h-full cover-bg"
-        style={{
-          backgroundImage: `radial-gradient(farthest-side at 73% 21%, transparent, rgb(7, 3, 7)), url(${process.env.HOST}${project.attributes.Cover.data.attributes.url})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          zIndex: "-1",
-          position: "fixed",
-        }}
-      ></div>
+      <div className="w-full h-3/4 lg:h-full cover-bg fixed">
+        <Image
+          src={`${process.env.HOST}${project.attributes.Cover.data.attributes.url}`}
+          alt={`${project.attributes.Title} Cover`}
+          className="object-cover object-center"
+          priority={true}
+          fill
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(farthest-side at 73% 21%, transparent, rgb(7, 3, 7))",
+            zIndex: "10",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        ></div>
+      </div>
+
       <article className="flex flex-col relative min-h-screen">
         <div className="z-10 px-4 lg:px-20">
           <div className="flex flex-col gap-8 mb-2 lg:mb-4">
@@ -148,25 +158,30 @@ export default async function Home({ params }: Props) {
               {project.attributes.Title}
             </h1>
             <div className="grid grid-cols-1 lg:grid-cols-2 mb-64 gap-4">
-              <p className="text-base">
-                {project.attributes.Description}
-              </p>
+              <p className="text-base">{project.attributes.Description}</p>
               <div className="pb-4 text-base lg:text-base">
                 <p className="text-[#cacaca] mb-2 lg:mb-1"> Technologies: </p>
                 {project.attributes.technologies.data.map(
                   (technology: any, index: number) => (
-                    <div key="index" className="flex flex-row gap-2 mb-2 lg:mb-4">
-                      { technology.attributes.Icon.data != null ? (
+                    <div
+                      key="index"
+                      className="flex flex-row gap-2 mb-2 lg:mb-4"
+                    >
+                      {technology.attributes.Icon.data != null ? (
                         <div className="w-6 h-6 relative text-white">
                           <Image
                             src={`${process.env.HOST}${technology.attributes.Icon.data.attributes.url}`}
                             alt={technology.attributes.Name}
-                            style={{ filter: 'invert(100%) sepia(100%) hue-rotate(180deg)' }}
+                            style={{
+                              filter:
+                                "invert(100%) sepia(100%) hue-rotate(180deg)",
+                            }}
                             fill
                           />
                         </div>
-                      ) : <div />
-                      }
+                      ) : (
+                        <div />
+                      )}
                       <p>{technology.attributes.Name}</p>
                     </div>
                   )
