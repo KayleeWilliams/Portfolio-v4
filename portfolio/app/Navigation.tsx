@@ -27,12 +27,13 @@ export default function Navigation() {
         }
       }
 
+      // Reduce cover opacity on scroll
       if (cover != null && cover.length > 0) {
         const coverElement = cover[0] as HTMLElement;
-        if (1 - window.scrollY / 500 > 0.2) {
+        if (1 - window.scrollY / 500 > 0.1) {
           coverElement.style.opacity = `${1 - window.scrollY / 500}`;
         } else {
-          coverElement.style.opacity = "0";
+          coverElement.style.opacity = "0.1";
         }
       }
     }

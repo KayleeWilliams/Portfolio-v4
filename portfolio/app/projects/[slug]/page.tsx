@@ -82,20 +82,19 @@ export default async function Home({ params }: Props) {
 
   return (
     <div className="w-full h-full text-white">
-      <div className="w-full h-3/4 lg:h-full cover-bg fixed">
+      <div className="w-full h-3/4 lg:h-full cover-bg fixed z-[-1]">
         <Image
           src={`${process.env.HOST}${project.attributes.Cover.data.attributes.url}`}
           alt={`${project.attributes.Title} Cover`}
-          className="object-cover object-center"
+          className="object-cover object-center z-0"
           priority={true}
           fill
         />
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 z-10"
           style={{
             background:
               "radial-gradient(farthest-side at 73% 21%, transparent, rgb(7, 3, 7))",
-            zIndex: "10",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

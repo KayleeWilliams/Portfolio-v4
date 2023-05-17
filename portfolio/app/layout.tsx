@@ -8,6 +8,8 @@ import Navigation from "./Navigation";
 
 import { Suspense } from "react";
 import Loading from "./loading";
+import { Analytics } from "@vercel/analytics/react";
+
 
 export const metadata: Metadata = {
   title: "Kaylee Williams Portfolio",
@@ -33,8 +35,9 @@ export default function RootLayout({
         <Suspense fallback={<Loading />}>
           <main className="mb-4 min-h-screen">{children}</main>
         </Suspense>
+        <Analytics />
         {/* <main className="mb-4 min-h-screen">{children}</main> */}
-        <footer className="bg-c-1 flex flex-row justify-center py-4 w-full text-center align-center z-auto bottom-0 opacity-100">
+        <footer className="bg-c-1 flex flex-row justify-center py-4 w-full text-center align-center z-50 bottom-0 opacity-100 ">
           <div className="flex flex-row gap-4">
             <Link href="http://github.com/KayleeWilliams" aria-label="GitHub" target="_blank">
               <AiFillGithub className="w-8 h-8 text-white hover:text-c-2 transition delay-75 duration-300 ease-in-out hover:-translate-y-1" />
