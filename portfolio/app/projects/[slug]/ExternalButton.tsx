@@ -7,10 +7,11 @@ import { AiFillGithub, AiFillYoutube } from "react-icons/ai";
 import { BiLinkExternal } from "react-icons/bi";
 
 export default function ExternalButton(props: any) {
-  const button = props.data;
-  const type = props.type;
-  const main = props.isMain;
-
+  const button: string = props.data;
+  const buttonText: string = props.buttonText;
+  const type: String = props.type;
+  const main: Boolean = props.isMain;
+  
   return (
     <>
       {main && (
@@ -25,9 +26,7 @@ export default function ExternalButton(props: any) {
             {type == "External" && <BiLinkExternal className="w-full h-full" />}
           </div>
 
-          {type == "Github" && <p> VIEW ON GITHUB </p>}
-          {type == "Youtube" && <p> WATCH ON YOUTUBE </p>}
-          {type == "External" && <p> VIEW DEMO </p>}
+          <p> {buttonText} </p>
         </Link>
       )}
 

@@ -134,6 +134,7 @@ export default async function Home({ params }: Props) {
                   <ExternalButton
                     data={data}
                     isMain={type === mainButton}
+                    buttonText={project.attributes.BtnText}
                     type={type}
                     key={type}
                   />
